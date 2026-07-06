@@ -13,10 +13,19 @@
     <constraint verify="static">Initialize Next.js app in the current directory non-interactively. Run: npx create-next-app@latest . --typescript --eslint --tailwind --app --no-src-dir --import-alias "@/*" --use-npm --yes && npm install better-sqlite3 && npm install --save-dev @types/better-sqlite3</constraint>
   </node>
 
+  <node id="setup.config" type="config-file" flow="setup">
+    <meta>
+      <path>next.config.mjs</path>
+      <depends_on>setup.nextjs</depends_on>
+    </meta>
+    <constraint verify="static">Create a next.config.mjs configuration file that exports default nextConfig. Ensure experimental.allowedDevOrigins includes '127.0.0.1' and 'localhost' to prevent dev WebSocket HMR connection blocks.</constraint>
+  </node>
+
   <node id="ui.home" type="ui-component" flow="navigation">
     <meta>
       <path>app/page.tsx</path>
       <depends_on>setup.nextjs</depends_on>
+      <depends_on>setup.config</depends_on>
     </meta>
     <constraint verify="static">File exports default React component</constraint>
     <constraint verify="static">Page contains a link with href="/products"</constraint>
