@@ -21,11 +21,20 @@
     <constraint verify="static">Create a next.config.mjs configuration file that exports default nextConfig. Ensure experimental.allowedDevOrigins includes '127.0.0.1' and 'localhost' to prevent dev WebSocket HMR connection blocks.</constraint>
   </node>
 
+  <node id="shared.db" type="db-helper" flow="setup">
+    <meta>
+      <path>lib/db.ts</path>
+      <depends_on>setup.nextjs</depends_on>
+    </meta>
+    <constraint verify="static">Create a helper file at lib/db.ts that exports a single shared instance of better-sqlite3 Database opened at path.resolve(process.cwd(), 'shop.db'). Set a busyTimeout option of 5000ms on the connection config to avoid database locking.</constraint>
+  </node>
+
   <node id="ui.home" type="ui-component" flow="navigation">
     <meta>
       <path>app/page.tsx</path>
       <depends_on>setup.nextjs</depends_on>
       <depends_on>setup.config</depends_on>
+      <depends_on>shared.db</depends_on>
     </meta>
     <constraint verify="static">File exports default React component</constraint>
     <constraint verify="static">Page contains a link with href="/products"</constraint>

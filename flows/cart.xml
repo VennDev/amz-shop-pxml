@@ -13,7 +13,7 @@
     <output>
       <field name="success" type="boolean" required="false" />
     </output>
-    <constraint verify="static">Initialize better-sqlite3 database at path.resolve(process.cwd(), 'shop.db') lazily inside handlers (not at top level of the module to prevent import crashes). Create cart table (id INTEGER PRIMARY KEY AUTOINCREMENT, productId INTEGER UNIQUE, quantity INTEGER) if not exists. Support POST (add/increment item), GET (returns array list of items joined with product details from products table), PUT (update quantity), and DELETE (clear/remove item).</constraint>
+    <constraint verify="static">Use the shared database connection imported from '@/lib/db' (or relative path) for all database operations instead of creating new Database instances. Create cart table (id INTEGER PRIMARY KEY AUTOINCREMENT, productId INTEGER UNIQUE, quantity INTEGER) if not exists. Support POST (add/increment item), GET (returns array list of items joined with product details from products table), PUT (update quantity), and DELETE (clear/remove item).</constraint>
     <test>
       <name>Add item to cart successful</name>
       <given>
