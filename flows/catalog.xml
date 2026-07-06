@@ -1,0 +1,20 @@
+<project name="catalog-flow" stack="nextjs" version="0.1.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../pxml.xsd">
+  
+  <node id="api.products" type="api-route" flow="catalog.products">
+    <meta>
+      <path>app/api/products/route.ts</path>
+    </meta>
+    <constraint verify="static">Initialize a better-sqlite3 database named 'shop.db'. Create a 'products' table with columns id (INTEGER PRIMARY KEY), name (TEXT), price (REAL), description (TEXT), image (TEXT). If the table is newly created, seed it with 5 sample products (e.g. Echo Dot, Kindle E-reader, Fire TV Stick, Wireless Headphones). Implement a GET handler returning all products as JSON.</constraint>
+  </node>
+
+  <node id="ui.products" type="ui-component" flow="catalog.view">
+    <meta>
+      <path>app/products/page.tsx</path>
+      <depends_on>api.products</depends_on>
+    </meta>
+    <constraint verify="static">Create a products catalog view at app/products/page.tsx (styled with beautiful Tailwind grid). Fetch the products from '/api/products' on mount. Display them with product cards showing image, title, description, price, and an 'Add to Cart' button calling the cart addition logic via fetch POST request to '/api/cart'. Include a navbar linking to Home ('/') and Cart ('/cart').</constraint>
+  </node>
+
+</project>

@@ -1,0 +1,8 @@
+node_modules
+.next
+dist
+.pxml
+.env
+*.db
+*.db-journal
+package-lock.json

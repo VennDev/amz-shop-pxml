@@ -1,0 +1,21 @@
+<project name="amazon-shop" stack="nextjs" version="0.1.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="pxml.xsd">
+  <import src="./flows/catalog.xml" as="catalog" />
+  <import src="./flows/cart.xml" as="cart" />
+
+  <node id="setup.nextjs" type="setup-command" flow="setup">
+    <meta>
+      <path>package.json</path>
+    </meta>
+    <constraint verify="static">Initialize Next.js app in the current directory non-interactively. Run: npx create-next-app@latest . --typescript --eslint --tailwind --app --no-src-dir --import-alias "@/*" --use-npm --yes && npm install better-sqlite3 && npm install --save-dev @types/better-sqlite3</constraint>
+  </node>
+
+  <node id="ui.home" type="ui-component" flow="navigation">
+    <meta>
+      <path>app/page.tsx</path>
+      <depends_on>setup.nextjs</depends_on>
+    </meta>
+    <constraint verify="static">Create a beautiful homepage styled with Tailwind CSS (clean dark/amazon-style theme). Include a header navbar with logo 'AmazonLite', search input, cart icon link, a big hero banner, and a link pointing to the catalog page at '/products'.</constraint>
+  </node>
+</project>
