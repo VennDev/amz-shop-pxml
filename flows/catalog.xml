@@ -33,6 +33,7 @@
     </meta>
     <constraint verify="static">File exports default React component</constraint>
     <constraint verify="static">Fetch the products from '/api/products' on mount</constraint>
+    <constraint verify="static">If fetch request fails or returns non-ok status, stop loading state and show a clear error message in the UI.</constraint>
     <constraint verify="static" learned-from="catalog.list">Ensure the SQLite table products is seeded properly, fetch from /api/products returns a valid JSON array on client mount, and errors are handled gracefully without crashing the UI.</constraint>
     <constraint verify="llm-judge">Create a professional products catalog view at app/products/page.tsx (styled with beautiful Tailwind grid). Display them with product cards showing image, title, description, price, and an 'Add to Cart' button calling the cart addition logic via fetch POST request to '/api/cart'. Include a navbar linking to Home ('/') and Cart ('/cart').</constraint>
   </node>

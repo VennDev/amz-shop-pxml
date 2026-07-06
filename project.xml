@@ -21,6 +21,7 @@
     <constraint verify="static">File exports default React component</constraint>
     <constraint verify="static">Page contains a link with href="/products"</constraint>
     <constraint verify="static">Page contains a link with href="/login"</constraint>
+    <constraint verify="static">Do not make any fetch or API calls to '/api/ram' or '/api/network/'. Only show static navigation links and hero banner.</constraint>
     <constraint verify="llm-judge">Create a beautiful homepage styled with Tailwind CSS (clean dark/amazon-style theme). Include a header navbar with logo \'AmazonLite\', search input, cart icon link, a big hero banner. Add a sign-in indicator button linking to \'/login\'.</constraint>
   </node>
 </project>
