@@ -1,0 +1,20 @@
+<project name="auth-flow" stack="nextjs" version="0.1.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="../pxml.xsd">
+
+  <node id="api.auth" type="api-route" flow="auth.manage">
+    <meta>
+      <path>app/api/auth/route.ts</path>
+    </meta>
+    <constraint verify="static">Initialize better-sqlite3 database 'shop.db'. Create a 'users' table (columns: id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT UNIQUE, password TEXT) if not exists. Implement a POST handler: if body contains action 'register', insert the user into database. If action 'login', select user, verify password, set a cookie named 'user_session' with the email value (acting as session identifier), and return success.</constraint>
+  </node>
+
+  <node id="ui.auth" type="ui-component" flow="auth.view">
+    <meta>
+      <path>app/login/page.tsx</path>
+      <depends_on>api.auth</depends_on>
+    </meta>
+    <constraint verify="static">Create a login and registration page at app/login/page.tsx (Amazon classic sign-in design). Display a card containing forms for both Sign-In and Create Account. Make POST requests to '/api/auth' with action 'login' or 'register' on submit. On success, store user state, set session cookies, and redirect to products catalog page at '/products'.</constraint>
+  </node>
+
+</project>

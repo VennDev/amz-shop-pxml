@@ -1,6 +1,7 @@
 <project name="amazon-shop" stack="nextjs" version="0.1.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="pxml.xsd">
+  <import src="./flows/auth.xml" as="auth" />
   <import src="./flows/catalog.xml" as="catalog" />
   <import src="./flows/cart.xml" as="cart" />
   <import src="./flows/checkout.xml" as="checkout" />
@@ -17,6 +18,6 @@
       <path>app/page.tsx</path>
       <depends_on>setup.nextjs</depends_on>
     </meta>
-    <constraint verify="static">Create a beautiful homepage styled with Tailwind CSS (clean dark/amazon-style theme). Include a header navbar with logo 'AmazonLite', search input, cart icon link, a big hero banner, and a link pointing to the catalog page at '/products'.</constraint>
+    <constraint verify="static">Create a beautiful homepage styled with Tailwind CSS (clean dark/amazon-style theme). Include a header navbar with logo 'AmazonLite', search input, cart icon link, a big hero banner, and a link pointing to the catalog page at '/products'. Add a sign-in indicator button linking to '/login'.</constraint>
   </node>
 </project>
