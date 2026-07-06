@@ -3,6 +3,7 @@
          xsi:noNamespaceSchemaLocation="pxml.xsd">
   <import src="./flows/catalog.xml" as="catalog" />
   <import src="./flows/cart.xml" as="cart" />
+  <import src="./flows/checkout.xml" as="checkout" />
 
   <node id="setup.nextjs" type="setup-command" flow="setup">
     <meta>

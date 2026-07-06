@@ -6,7 +6,7 @@
     <meta>
       <path>app/api/cart/route.ts</path>
     </meta>
-    <constraint verify="static">Initialize the better-sqlite3 database 'shop.db'. Create a 'cart' table with columns id (INTEGER PRIMARY KEY), productId (INTEGER), quantity (INTEGER). If it is a POST request, insert/increment item quantity in the cart. If it is a GET request, select and return all items in the cart joined with product details from the 'products' table. If it is a DELETE request, clear/empty the cart table.</constraint>
+    <constraint verify="static">Initialize better-sqlite3 database 'shop.db'. Create a 'cart' table (columns: id INTEGER PRIMARY KEY, productId INTEGER, quantity INTEGER) if not exists. Support POST (inserts or increments product quantity), GET (returns cart items joined with products details), PUT (updates quantity for a specific productId), and DELETE (if query param productId is provided, delete that item, else clear the entire cart).</constraint>
     <test>
       <name>Add item to cart successful</name>
       <given>
@@ -26,7 +26,7 @@
       <path>app/cart/page.tsx</path>
       <depends_on>api.cart</depends_on>
     </meta>
-    <constraint verify="static">Create a shopping cart summary page at app/cart/page.tsx (modern Tailwind layout, dark/card dashboard design). Fetch cart items from '/api/cart' on mount, compute total cart price, display items in list, and show a 'Clear Cart' button calling DELETE to '/api/cart' and a mock 'Proceed to Checkout' button showing a success message. Link back to '/products'.</constraint>
+    <constraint verify="static">Create a professional shopping cart page at app/cart/page.tsx designed like Amazon's shopping cart. Display list of cart items with columns for product details, unit price, quantity selector (fetch PUT on change), and a 'Delete' button next to each item (fetch DELETE on click). On the right side, show a subtotal box with a yellow 'Proceed to checkout' link button pointing to '/checkout'. Link back to '/products' to continue shopping.</constraint>
   </node>
 
 </project>
