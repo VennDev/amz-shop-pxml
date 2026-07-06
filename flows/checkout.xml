@@ -6,7 +6,27 @@
     <meta>
       <path>app/api/checkout/route.ts</path>
     </meta>
+    <input>
+      <field name="fullName" type="string" required="true" />
+      <field name="address" type="string" required="true" />
+    </input>
+    <output>
+      <field name="orderId" type="number" required="true" />
+    </output>
     <constraint verify="static">Initialize better-sqlite3 database at path.resolve(process.cwd(), 'shop.db') lazily inside handlers (not at top level of the module to prevent import crashes). Create an 'orders' table (columns: id INTEGER PRIMARY KEY AUTOINCREMENT, totalAmount REAL, itemsCount INTEGER, date TEXT, fullName TEXT, address TEXT) if not exists. Support POST: reads all items in 'cart', calculates total sum, inserts a new order row, clears the 'cart' table, and returns the generated orderId. Support GET: returns all orders history sorted by date descending.</constraint>
+    <test>
+      <name>Place order successfully</name>
+      <given>
+        <body json="true">
+          <fullName>John Doe</fullName>
+          <address>123 main st</address>
+        </body>
+      </given>
+      <expect>
+        <status>200</status>
+        <contains>orderId</contains>
+      </expect>
+    </test>
   </node>
 
   <node id="ui.checkout" type="ui-component" flow="checkout.view">
@@ -14,7 +34,9 @@
       <path>app/checkout/page.tsx</path>
       <depends_on>api.checkout</depends_on>
     </meta>
-    <constraint verify="static">Create a checkout form page at app/checkout/page.tsx (Amazon multi-step styling). Display shipping fields (Full Name, Address, City, Zip). Display cart summary, calculate total, and show a 'Place your order' yellow button that POSTs to '/api/checkout' and redirects to '/orders' with a success message.</constraint>
+    <constraint verify="static">File exports default React component</constraint>
+    <constraint verify="static">Form POSTs shipping data to '/api/checkout' and on success redirects to '/orders'</constraint>
+    <constraint verify="llm-judge">Create a checkout form page at app/checkout/page.tsx (Amazon multi-step styling). Display shipping fields (Full Name, Address, City, Zip). Display cart summary, calculate total, and show a 'Place your order' yellow button.</constraint>
   </node>
 
   <node id="ui.orders" type="ui-component" flow="checkout.history">
@@ -22,7 +44,9 @@
       <path>app/orders/page.tsx</path>
       <depends_on>api.checkout</depends_on>
     </meta>
-    <constraint verify="static">Create an orders history view at app/orders/page.tsx. Fetch orders list from '/api/checkout' on mount. Display previous orders with order card columns (Order Placed date, Total Cost, Ship To address, Status: Delivered/Shipped mock status). Add a button linking back to '/products' to continue shopping.</constraint>
+    <constraint verify="static">File exports default React component</constraint>
+    <constraint verify="static">Fetch orders list from '/api/checkout' on mount</constraint>
+    <constraint verify="llm-judge">Create an orders history view at app/orders/page.tsx. Display previous orders with order card columns (Order Placed date, Total Cost, Ship To address, Status: Delivered/Shipped mock status). Add a button linking back to '/products' to continue shopping.</constraint>
   </node>
 
 </project>

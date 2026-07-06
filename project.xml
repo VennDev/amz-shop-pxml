@@ -18,6 +18,9 @@
       <path>app/page.tsx</path>
       <depends_on>setup.nextjs</depends_on>
     </meta>
-    <constraint verify="static">Create a beautiful homepage styled with Tailwind CSS (clean dark/amazon-style theme). Include a header navbar with logo 'AmazonLite', search input, cart icon link, a big hero banner, and a link pointing to the catalog page at '/products'. Add a sign-in indicator button linking to '/login'.</constraint>
+    <constraint verify="static">File exports default React component</constraint>
+    <constraint verify="static">Page contains a link with href="/products"</constraint>
+    <constraint verify="static">Page contains a link with href="/login"</constraint>
+    <constraint verify="llm-judge">Create a beautiful homepage styled with Tailwind CSS (clean dark/amazon-style theme). Include a header navbar with logo \'AmazonLite\', search input, cart icon link, a big hero banner. Add a sign-in indicator button linking to \'/login\'.</constraint>
   </node>
 </project>

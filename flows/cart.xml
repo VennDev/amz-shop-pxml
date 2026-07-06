@@ -6,6 +6,13 @@
     <meta>
       <path>app/api/cart/route.ts</path>
     </meta>
+    <input>
+      <field name="productId" type="number" required="true" />
+      <field name="quantity" type="number" required="true" />
+    </input>
+    <output>
+      <field name="success" type="boolean" required="false" />
+    </output>
     <constraint verify="static">Initialize better-sqlite3 database at path.resolve(process.cwd(), 'shop.db') lazily inside handlers (not at top level of the module to prevent import crashes). Create cart table (id INTEGER PRIMARY KEY AUTOINCREMENT, productId INTEGER UNIQUE, quantity INTEGER) if not exists. Support POST (add/increment item), GET (returns array list of items joined with product details from products table), PUT (update quantity), and DELETE (clear/remove item).</constraint>
     <test>
       <name>Add item to cart successful</name>
@@ -26,7 +33,10 @@
       <path>app/cart/page.tsx</path>
       <depends_on>api.cart</depends_on>
     </meta>
-    <constraint verify="static">Create a shopping cart summary page at app/cart/page.tsx. Fetch cart items from '/api/cart' on mount. Note that the GET handler returns an array list of items directly (e.g. cartData should be mapped/reduced directly, not through cartData.items). Display items, support quantity updates, single deletion, and checkout redirection.</constraint>
+    <constraint verify="static">File exports default React component</constraint>
+    <constraint verify="static">Fetch cart items from '/api/cart' on mount</constraint>
+    <constraint verify="static" learned-from="cart.badge">Always fetch active cart status from backend database route, never from localStorage to ensure cart badge count displays correctly.</constraint>
+    <constraint verify="llm-judge">Create a shopping cart summary page at app/cart/page.tsx. Note that the GET handler returns an array list of items directly. Display items, support quantity updates, single deletion, and checkout redirection.</constraint>
   </node>
 
 </project>
