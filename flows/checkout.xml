@@ -6,7 +6,7 @@
     <meta>
       <path>app/api/checkout/route.ts</path>
     </meta>
-    <constraint verify="static">Initialize better-sqlite3 database 'shop.db'. Create an 'orders' table (columns: id INTEGER PRIMARY KEY AUTOINCREMENT, totalAmount REAL, itemsCount INTEGER, date TEXT, fullName TEXT, address TEXT) if not exists. Support POST: reads all items in 'cart', calculates total sum, inserts a new order row, clears the 'cart' table, and returns the generated orderId. Support GET: returns all orders history sorted by date descending.</constraint>
+    <constraint verify="static">Initialize better-sqlite3 database at path.resolve(process.cwd(), 'shop.db') lazily inside handlers (not at top level of the module to prevent import crashes). Create an 'orders' table (columns: id INTEGER PRIMARY KEY AUTOINCREMENT, totalAmount REAL, itemsCount INTEGER, date TEXT, fullName TEXT, address TEXT) if not exists. Support POST: reads all items in 'cart', calculates total sum, inserts a new order row, clears the 'cart' table, and returns the generated orderId. Support GET: returns all orders history sorted by date descending.</constraint>
   </node>
 
   <node id="ui.checkout" type="ui-component" flow="checkout.view">

@@ -6,7 +6,7 @@
     <meta>
       <path>app/api/products/route.ts</path>
     </meta>
-    <constraint verify="static">Initialize a better-sqlite3 database named 'shop.db'. Create a 'products' table with columns id (INTEGER PRIMARY KEY), name (TEXT), price (REAL), description (TEXT), image (TEXT), category (TEXT), rating (REAL), reviewsCount (INTEGER) if it does not exist. If newly created, seed the database with 10+ realistic Amazon items (e.g., Kindle Paperwhite, Echo Show 8, Fire TV Stick 4K, Apple AirPods Pro, Sony WH-1000XM4, Instant Pot Duo, Ergonomic Office Chair, Yeti Rambler Tumbler, Clean Code Book, Hydro Flask Water Bottle). Support both a GET handler (to return products filtered optional query category/search) and a POST handler to insert new products.</constraint>
+    <constraint verify="static">Initialize better-sqlite3 database at path.resolve(process.cwd(), 'shop.db') lazily inside handlers (not at top level of the module to prevent import crashes). Create products table (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, price REAL, description TEXT, image TEXT, category TEXT, rating REAL, reviewsCount INTEGER) if not exists. Seed with 10+ items if table is empty. Support GET and POST.</constraint>
   </node>
 
   <node id="ui.products" type="ui-component" flow="catalog.view">
@@ -14,7 +14,7 @@
       <path>app/products/page.tsx</path>
       <depends_on>api.products</depends_on>
     </meta>
-    <constraint verify="static">Create a professional products catalog view at app/products/page.tsx (Amazon classic layout: yellow-accented buttons, product grids, sidebar filters by category and rating, search bar). Fetch products from '/api/products' on mount. Display item cards showing: rating stars (e.g. 4.5/5), reviews count, Amazon Prime tag mock, price, strikethrough list price, and a yellow 'Add to Cart' button triggering a POST request to '/api/cart'. Include a global navbar linking to Home ('/'), Cart ('/cart') with badge, and Orders ('/orders').</constraint>
+    <constraint verify="static">Create a professional products catalog view at app/products/page.tsx (styled with beautiful Tailwind grid). Fetch the products from '/api/products' on mount. Display them with product cards showing image, title, description, price, and an 'Add to Cart' button calling the cart addition logic via fetch POST request to '/api/cart'. Include a navbar linking to Home ('/') and Cart ('/cart').</constraint>
   </node>
 
 </project>
