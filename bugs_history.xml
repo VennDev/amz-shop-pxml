@@ -3,4 +3,7 @@
   <bug id="cart.badge" flow="cart.view">
     Cart badge count displays 0 despite items being in the shopping cart database. Always fetch active cart status from the backend database route instead of localStorage.
   </bug>
+  <bug id="catalog.list" flow="catalog.view">
+    Product catalog page fails to display products list due to fetching errors or empty database responses. Ensure the SQLite table products is seeded properly, fetch from /api/products returns a valid JSON array on client mount, and errors are handled gracefully without crashing the UI.
+  </bug>
 </bugs>
