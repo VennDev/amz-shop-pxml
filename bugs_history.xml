@@ -1,4 +1,5 @@
-<bugs>
+<bugs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="bugs.xsd">
   <bug id="cart.badge" flow="cart.view">
     Cart badge count displays 0 despite items being in the shopping cart database. Always fetch active cart status from the backend database route instead of localStorage.
   </bug>
