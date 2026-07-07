@@ -27,3 +27,7 @@ Open `http://localhost:3000` to browse your Amazon Lite store!
 
 ### 3. Check Manifest State
 All compiler build records, generated files, hashes, and lock parameters are tracked in `.pxml/manifest.json`.
+
+### 4. Preview
+<img width="1908" height="948" alt="image" src="https://github.com/user-attachments/assets/12ff88f1-856c-497e-8fa9-10b51f045864" />
+
