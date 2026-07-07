@@ -14,7 +14,7 @@
     <output>
       <field name="success" type="boolean" required="true" />
     </output>
-    <constraint verify="static">Use the shared database connection imported from '@/lib/db' (or relative path) for all database operations instead of creating new Database instances. Initialize tables if not exists using the shared connection. Implement a POST handler: if body contains action 'register', insert the user into database. If action 'login', select user, verify password, set a cookie named 'user_session' with the email value (acting as session identifier), and return success.</constraint>
+    <constraint verify="static">Use the shared database connection imported from '@/lib/db' (or relative path) for all database operations instead of creating new Database instances. Initialize tables if not exists using the shared connection. Implement a POST handler: if body contains action 'register', insert the user into database. If action 'login', select user, verify password, set a cookie named 'user_session' with the email value (acting as session identifier), and return success. Ensure the route is dynamic and not cached by exporting: export const dynamic = 'force-dynamic';</constraint>
     <test>
       <name>Register user successfully</name>
       <given>

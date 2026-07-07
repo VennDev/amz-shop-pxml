@@ -12,7 +12,7 @@
     <output>
       <field name="products" type="array" required="false" />
     </output>
-    <constraint verify="static">Use the shared database connection imported from '@/lib/db' (or relative path) for all database operations instead of creating new Database instances. Create products table (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, price REAL, description TEXT, image TEXT, category TEXT, rating REAL, reviewsCount INTEGER) if not exists. Seed with 10+ items if table is empty. Support GET and POST.</constraint>
+    <constraint verify="static">Use the shared database connection imported from '@/lib/db' (or relative path) for all database operations instead of creating new Database instances. Create products table (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, price REAL, description TEXT, image TEXT, category TEXT, rating REAL, reviewsCount INTEGER) if not exists. Seed with 10+ items if table is empty. Support GET and POST. Ensure the route is dynamic and not cached by exporting: export const dynamic = 'force-dynamic';</constraint>
     <test>
       <name>Get products list successfully</name>
       <given>

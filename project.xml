@@ -1,4 +1,4 @@
-<project name="amazon-shop" stack="nextjs" version="0.1.0"
+<project name="amazon-shop" stack="nextjs" version="0.1.0" autogen-tests="true"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="pxml.xsd">
   <import package="init-nextjs-project" from="packages/init-nextjs-project" as="nextjs-init" />
