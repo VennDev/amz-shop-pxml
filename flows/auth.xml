@@ -1,6 +1,9 @@
-<project name="auth-flow" stack="nextjs" version="0.1.0"
+<project name="auth-flow"
+         stack="nextjs"
+         version="0.1.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="../pxml.xsd">
+         xsi:noNamespaceSchemaLocation="../pxml.xsd"
+         autogen-tests="true">
 
   <node id="api.auth" type="api-route" flow="auth.manage">
     <meta>

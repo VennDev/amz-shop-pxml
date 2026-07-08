@@ -1,6 +1,9 @@
-<project name="init-nextjs-project" stack="nextjs" version="0.1.0"
+<project name="init-nextjs-project"
+         stack="nextjs"
+         version="0.1.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="../../pxml.xsd">
+         xsi:noNamespaceSchemaLocation="../../pxml.xsd"
+         autogen-tests="true">
   <node id="base-setup" type="setup-command" flow="setup">
     <meta>
       <path>package.json</path>

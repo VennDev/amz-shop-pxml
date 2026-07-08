@@ -1,6 +1,9 @@
-<project name="catalog-flow" stack="nextjs" version="0.1.0"
+<project name="catalog-flow"
+         stack="nextjs"
+         version="0.1.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="../pxml.xsd">
+         xsi:noNamespaceSchemaLocation="../pxml.xsd"
+         autogen-tests="true">
   
   <node id="api.products" type="api-route" flow="catalog.products">
     <meta>
