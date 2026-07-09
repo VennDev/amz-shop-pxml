@@ -32,7 +32,7 @@
     </test>
   </node>
 
-  <node id="ui.checkout" type="ui-component" flow="checkout.view">
+  <node id="ui.checkout" type="ui-component" flow="checkout.view" extends="uix:ecommerce:checkout">
     <meta>
       <path>app/checkout/page.tsx</path>
       <depends_on>api.checkout</depends_on>
@@ -42,7 +42,7 @@
     <constraint verify="llm-judge">Create a checkout form page at app/checkout/page.tsx (Amazon multi-step styling). Display shipping fields (Full Name, Address, City, Zip). Display cart summary, calculate total, and show a 'Place your order' yellow button.</constraint>
   </node>
 
-  <node id="ui.orders" type="ui-component" flow="checkout.history">
+  <node id="ui.orders" type="ui-component" flow="checkout.history" extends="uix:ecommerce:orderHistory">
     <meta>
       <path>app/orders/page.tsx</path>
       <depends_on>api.checkout</depends_on>

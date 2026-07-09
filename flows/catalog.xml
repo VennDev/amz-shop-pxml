@@ -29,7 +29,7 @@
     </test>
   </node>
 
-  <node id="ui.products" type="ui-component" flow="catalog.view">
+  <node id="ui.products" type="ui-component" flow="catalog.view" extends="uix:ecommerce:productGrid">
     <meta>
       <path>app/products/page.tsx</path>
       <depends_on>api.products</depends_on>

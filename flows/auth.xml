@@ -34,7 +34,7 @@
     </test>
   </node>
 
-  <node id="ui.auth" type="ui-component" flow="auth.view">
+  <node id="ui.auth" type="ui-component" flow="auth.view" extends="uix:auth:login">
     <meta>
       <path>app/login/page.tsx</path>
       <depends_on>api.auth</depends_on>

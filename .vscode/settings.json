@@ -1,0 +1,7 @@
+{
+  "xml.catalogs": [
+    "packages/ui-ux-components-pxml/catalog.xml",
+    "packages/init-nextjs-project/catalog.xml",
+    ".pxml/catalog.xml"
+  ]
+}

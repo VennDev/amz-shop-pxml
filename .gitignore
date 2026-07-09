@@ -6,3 +6,4 @@ dist
 *.db
 *.db-journal
 package-lock.json
+packages/ui-ux-components-pxml/

@@ -31,7 +31,7 @@
     </test>
   </node>
 
-  <node id="ui.cart" type="ui-component" flow="cart.view">
+  <node id="ui.cart" type="ui-component" flow="cart.view" extends="uix:ecommerce:cart">
     <meta>
       <path>app/cart/page.tsx</path>
       <depends_on>api.cart</depends_on>
