@@ -1,0 +1,6 @@
+{
+  "pxml": "0.4.1",
+  "packages": {
+    "ui-ux-components-pxml": "https://github.com/two-tech-dev/ui-ux-components-pxml.git"
+  }
+}
