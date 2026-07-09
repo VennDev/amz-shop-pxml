@@ -1,33 +1,74 @@
-# Amazon Lite - pxml specification
+# Amazon Lite — pxml Project
 
-This is an Amazon-like online store built entirely using structured XML specifications and compiled using the `pxml` compiler.
+An Amazon-like online store built entirely with **structured XML specs** and
+compiled by the **pxml** compiler. Uses the `ui-ux-components-pxml` library
+for UI pages (login, product grid, cart, checkout, order history) extended
+with custom Amazon-dark style constraints.
 
 ## Features
-- **Scaffolding Setup**: Automates Next.js initialization with Tailwind CSS.
-- **Product Catalog (`flows/catalog.xml`)**: SQLite seeding database of 10+ products across multiple categories. Grid view, search, and catalog filtering.
-- **Shopping Cart (`flows/cart.xml`)**: Amazon-styled cart page supporting quantity changes, item removal, and database syncing.
-- **Checkout & Orders (`flows/checkout.xml`)**: Address forms, placing order APIs, clearing active carts, and order history receipts.
 
-## How to Compile and Run
+- **Catalog (`flows/catalog.xml`)** — 10+ products seeded in SQLite, grid view,
+  product cards with images/prices, add-to-cart via `/api/cart`.
+- **Shopping Cart (`flows/cart.xml`)** — quantity stepper, remove item, syncs
+  with backend DB.
+- **Checkout & Orders (`flows/checkout.xml`)** — shipping form → place order →
+  order history receipt.
+- **Auth (`flows/auth.xml`)** — login/register with session cookies.
+- **UI Components** extend from `ui-ux-components-pxml` (login, productGrid,
+  cart, checkout, orderHistory) — each with an attached `llm-judge` prompt
+  for Amazon-style theming.
 
-### 1. Build & Compile with AI
-Run the compiler inside this directory with your chosen AI provider (for example, using OpenAI):
+## Quick Start
+
+### 1. Install pxml
+
 ```bash
-export OPENAI_API_KEY="your-api-key"
+npm install -g @two-tech-dev/pxml
+```
+
+### 2. Install packages
+
+```bash
+pxml install
+```
+This reads `pxml.json` and clones `ui-ux-components-pxml` into
+`packages/ui-ux-components-pxml/` (plus binds its editor schema).
+
+### 3. Validate
+
+```bash
+pxml validate
+```
+Generates an alias-aware enriched schema → your editor suggests exact
+`extends="uix:auth:login"`, `flow="auth"`, etc. automatically.
+
+### 4. Compile with AI
+
+```bash
+export OPENAI_API_KEY="your-api-key"   # or ANTHROPIC_API_KEY
 pxml compile --provider openai --model gpt-4o
 ```
-This will automatically execute the setup commands, install the required packages (`better-sqlite3`), and write all component codes.
 
-### 2. Run Next.js Local Server
-Once compilation finishes successfully:
+### 5. Run
+
 ```bash
 npm run dev
 ```
-Open `http://localhost:3000` to browse your Amazon Lite store!
 
-### 3. Check Manifest State
-All compiler build records, generated files, hashes, and lock parameters are tracked in `.pxml/manifest.json`.
+## How It Works
 
-### 4. Preview
-<img width="1908" height="948" alt="image" src="https://github.com/user-attachments/assets/12ff88f1-856c-497e-8fa9-10b51f045864" />
+- `project.xml` — imports flows + UI library, defines setup/config/db nodes.
+- `flows/*.xml` — API routes and UI page specs (extend `ui-ux-components-pxml`).
+- `packages/ui-ux-components-pxml/` — installed by `pxml install` (gitignored).
+- `pxml.json` — manifest tracking the pxml version and package dependencies.
 
+### Editor Autocomplete
+
+`pxml validate` auto-generates an enriched schema that enumerates all valid
+`flow` values, node `type`s, and exact `extends` values (`uix:auth:login`,
+`uix:ecommerce:productGrid`…). VS Code (Red Hat XML extension) picks it up
+via `.pxml/catalog.xml` — zero config.
+
+## Preview
+
+![Amazon Lite](https://github.com/user-attachments/assets/12ff88f1-856c-497e-8fa9-10b51f045864)
